@@ -18,6 +18,8 @@ public class LoginController {
         String Username = usernameField.getText();
         String Password = passwordField.getText();
         System.out.println("Username: " + Username + " Password: " + Password);
+
+
         FxmlLoader.load(rootLayout, "/MyApp/mainMenu.fxml");
     }
 }
