@@ -1,15 +1,13 @@
 package MyApp;
 
-import MyApp.Util.JsonHandler;
-import MyApp.temp.AppConfig;
-import MyApp.temp.User;
+import MyApp.Classes.Word;
+import MyApp.Classes.WordList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -26,8 +24,12 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws IOException {
-//        User user = new User("admin", "admin");
-//        user.addUser();
+        Word word = new Word("hello", "a greeting");
+        WordList wordList = new WordList("Greetings");
+        wordList.NewWordList();
+//        WordList wordList1 = WordList.getWordList("Greetings");
+//        wordList1.addWord(word);
+
         launch(args);
     }
 }

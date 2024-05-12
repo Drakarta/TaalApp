@@ -4,12 +4,12 @@ import MyApp.Util.FxmlLoader;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 
-public class MainMenuController {
+public class MainMenuController implements Controller {
     @FXML
     private VBox rootLayout;
     @FXML
     public void handleWordListsButtonAction() {
-        FxmlLoader.load(rootLayout, "/MyApp/wordLists.fxml");
+        FxmlLoader.load(rootLayout, "/MyApp/wordList.fxml");
     }
     @FXML
     public void handleLogoutButtonAction() {

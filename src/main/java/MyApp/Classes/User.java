@@ -1,29 +1,26 @@
-package MyApp.temp;
+package MyApp.Classes;
 
 import MyApp.Util.JsonHandler;
+
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.UUID;
 
 public class User {
-    private UUID id;
-    private String username;
-    private String hashWord;
-    private ArrayList<Word> wordList;
+    private final UUID id;
+    private final String username;
+    private final String hashWord;
 
-    // Default constructor
     public User() {
         this.id = UUID.randomUUID();
         this.username = "";
         this.hashWord = "";
-        this.wordList = new ArrayList<>();
     }
 
     public User(String username, String hashWord) {
         this.id = UUID.randomUUID();
         this.username = username;
         this.hashWord = hashWord;
-        this.wordList = new ArrayList<>();
     }
 
     public void addUser() {
@@ -40,7 +37,26 @@ public class User {
     }
 
     public static AppConfig getUsers() throws IOException {
-        return JsonHandler.readJson(AppConfig.class, "users.json");
+        String fileName = "users.json";
+        File file = new File(fileName);
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+                return new AppConfig();
+            } catch (IOException e) {
+                System.err.println("Error creating users file: " + e.getMessage());
+                throw e;
+            }
+        }
+        try {
+            if (file.length() == 0) {
+                return new AppConfig();
+            }
+            return JsonHandler.readJson(AppConfig.class, fileName);
+        } catch (IOException e) {
+            System.err.println("Error reading users: " + e.getMessage());
+            throw e;
+        }
     }
 
     public UUID getId() {
@@ -53,9 +69,5 @@ public class User {
 
     public String getHashWord() {
         return hashWord;
-    }
-
-    public ArrayList<Word> getWordList() {
-        return wordList;
     }
 }

@@ -1,7 +1,7 @@
 package MyApp.Controllers;
 
-import MyApp.temp.AppConfig;
-import MyApp.temp.User;
+import MyApp.Classes.AppConfig;
+import MyApp.Classes.User;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -11,7 +11,7 @@ import MyApp.Util.FxmlLoader;
 
 import java.io.IOException;
 
-public class LoginController {
+public class LoginController implements Controller {
     @FXML
     private Label titleLabel;
     @FXML
@@ -30,11 +30,10 @@ public class LoginController {
             if (user.getUsername().equals(username)) {
                 if (BCrypt.verifyer().verify(password.toCharArray(), user.getHashWord()).verified) {
                     FxmlLoader.load(rootLayout, "/MyApp/mainMenu.fxml");
-                    return;
                 } else {
                     titleLabel.setText("Invalid username or password");
-                    return;
                 }
+                return;
             } else {
                 titleLabel.setText("Invalid username or password");
             }

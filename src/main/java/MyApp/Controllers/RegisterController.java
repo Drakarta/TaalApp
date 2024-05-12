@@ -1,16 +1,13 @@
 package MyApp.Controllers;
 
 import MyApp.Util.FxmlLoader;
-import MyApp.Util.JsonHandler;
-import MyApp.temp.User;
+import MyApp.Classes.User;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
-import java.util.Arrays;
-
-public class RegisterController {
+public class RegisterController implements Controller {
     @FXML
     private VBox rootLayout;
     @FXML

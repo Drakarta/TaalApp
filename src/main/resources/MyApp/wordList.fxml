@@ -6,6 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.shape.Box?>
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:id="rootLayout"
       fx:controller="MyApp.Controllers.WordListController"
@@ -13,8 +14,8 @@
       prefHeight="240"
       alignment="CENTER">
     <children>
-
-
-
+        <Label text="Word Lists" />
+        <VBox fx:id="Content" />
+        <Button text="Back" onAction="#handleBackButtonAction" />
     </children>
 </VBox>
