@@ -1,11 +1,19 @@
 package MyApp.Controllers;
 
+import MyApp.temp.AppConfig;
+import MyApp.temp.User;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import MyApp.Util.FxmlLoader;
 
+import java.io.IOException;
+
 public class LoginController {
+    @FXML
+    private Label titleLabel;
     @FXML
     private VBox rootLayout;
     @FXML
@@ -14,13 +22,28 @@ public class LoginController {
     private TextField passwordField;
 
     @FXML
-    public void handleSubmitButtonAction() {
-        String Username = usernameField.getText();
-        String Password = passwordField.getText();
-        System.out.println("Username: " + Username + " Password: " + Password);
+    public void handleSubmitButtonAction() throws IOException {
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+        AppConfig users = User.getUsers();
+        for (User user : users.userList) {
+            if (user.getUsername().equals(username)) {
+                if (BCrypt.verifyer().verify(password.toCharArray(), user.getHashWord()).verified) {
+                    FxmlLoader.load(rootLayout, "/MyApp/mainMenu.fxml");
+                    return;
+                } else {
+                    titleLabel.setText("Invalid username or password");
+                    return;
+                }
+            } else {
+                titleLabel.setText("Invalid username or password");
+            }
+        }
+    }
 
-
-        FxmlLoader.load(rootLayout, "/MyApp/mainMenu.fxml");
+    @FXML
+    public void handleRegisterButtonAction() {
+        FxmlLoader.load(rootLayout, "/MyApp/register.fxml");
     }
 }
 

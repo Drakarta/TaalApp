@@ -8,14 +8,14 @@
 
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:id="rootLayout"
-      fx:controller="MyApp.Controllers.MainMenuController"
+      fx:controller="MyApp.Controllers.ConfirmPageController"
       prefWidth="320"
       prefHeight="240"
       alignment="CENTER">
     <children>
-        <Label text="Main Menu" />
-        <Button text="Word Lists" onAction="#handleWordListsButtonAction" />
-        <Button text="Logout" onAction="#handleLogoutButtonAction" />
-        <Button text="Exit" onAction="#handleExitButtonAction" />
+        <Label fx:id="titleLabel" text="Confirm" />
+        <Button text="Continue" onAction="#handleContinueButtonAction" />
+
+
     </children>
 </VBox>

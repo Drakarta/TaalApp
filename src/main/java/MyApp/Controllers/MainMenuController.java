@@ -8,6 +8,10 @@ public class MainMenuController {
     @FXML
     private VBox rootLayout;
     @FXML
+    public void handleWordListsButtonAction() {
+        FxmlLoader.load(rootLayout, "/MyApp/wordLists.fxml");
+    }
+    @FXML
     public void handleLogoutButtonAction() {
         FxmlLoader.load(rootLayout, "/MyApp/login.fxml");
     }

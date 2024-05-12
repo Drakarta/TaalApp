@@ -13,11 +13,11 @@ public class JsonHandler {
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
-    public static void writeJson(Object data, File file) throws IOException {
-        objectMapper.writeValue(file, data);
+    public static void writeJson(Object data, String file) throws IOException {
+        objectMapper.writeValue(new File("data/" + file), data);
     }
 
-    public static <T> T readJson(Class<T> valueType, File file) throws IOException {
-        return objectMapper.readValue(file, valueType);
+    public static <T> T readJson(Class<T> valueType, String file) throws IOException {
+        return objectMapper.readValue(new File("data/" + file), valueType);
     }
 }

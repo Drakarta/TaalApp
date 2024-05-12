@@ -1,0 +1,13 @@
+{
+  "userList" : [ {
+    "id" : "e10a6436-9d5e-436c-944f-d4d609515c9d",
+    "username" : "admin",
+    "hashWord" : "admin",
+    "wordList" : [ ]
+  }, {
+    "id" : "d7c2e211-1cc2-4e05-987f-450c2a14d26f",
+    "username" : "123",
+    "hashWord" : "$2a$12$dpN.dAFN9q4LB3UTjCsPc.gnljDqwq./prpj0irGtrgoCpMOVmST.",
+    "wordList" : [ ]
+  } ]
+}
